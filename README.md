@@ -76,3 +76,7 @@ npm run dev
 ## Unit Test Coverage Result
 
 ![coverage](public/images/coverage.png)
+
+## Deployment Site
+
+https://anime-list-gules.vercel.app/
