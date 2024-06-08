@@ -132,7 +132,7 @@ const Home = () => {
           className="text-black border p-2 w-full"
           placeholder="Search anime..."
         />
-        <div className="flex gap-2">
+        <div className="px-4 flex flex-wrap gap-2">
           <SortDropdown sortOption={sortOption} setSortOption={setSortOption} />
           <div
             className="px-4 flex gap-2 items-center bg-eerie-black rounded-md cursor-pointer"

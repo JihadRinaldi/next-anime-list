@@ -15,13 +15,13 @@ const AnimeDetail = ({ animeData }: AnimeDetailProps) => {
         <BackButton />
       </div>
       <AnimeDetailHeader animeData={animeData} />
-      <div className="flex flex-col gap-2">
+      <div className="w-full flex flex-col gap-2">
         <div>
           <Text
             label="Synopsis"
             className="text-white font-semibold py-2 border-b-2 border-charcoal-gray"
           />
-          <p className="my-4">{animeData.synopsis}</p>
+          <Text className="my-4" label={animeData.synopsis} />
         </div>
         {animeData.background ? (
           <div>

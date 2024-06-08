@@ -20,7 +20,7 @@ const FilterGenre: React.FC<FilterGenreProps> = ({
   };
 
   return (
-    <div className="h-10 px-4 flex gap-2">
+    <div className="self-stretch flex gap-2">
       <div>
         <select
           className="p-2 w-full h-full flex gap-2 items-center bg-eerie-black rounded-md cursor-pointer"

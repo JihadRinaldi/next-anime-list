@@ -19,7 +19,7 @@ const AnimeDetailHeader = ({ animeData }: AnimeDetailProps) => {
   );
 
   return (
-    <div className="p-4 flex gap-2 w-full bg-eerie-black rounded-md">
+    <div className="p-4 flex flex-wrap justify-center gap-2 w-full bg-eerie-black rounded-md">
       <div className="relative aspect-[184/289] w-48 h-full">
         <ImageWithFallback
           fill
@@ -28,12 +28,12 @@ const AnimeDetailHeader = ({ animeData }: AnimeDetailProps) => {
           className="object-cover"
         />
       </div>
-      <div className="p-4 flex flex-col gap-4">
+      <div className="p-4 flex flex-wrap flex-col gap-4">
         <h1 className="text-3xl font-bold">{animeData.title}</h1>
-        <div className="flex flex-col gap-4 justify-between">
-          <div className="flex gap-6 items-start">
+        <div className="flex flex-wrap flex-col gap-4 justify-between">
+          <div className="flex flex-wrap gap-6 items-start">
             {animeData.score && animeData.scored_by ? (
-              <div className="flex flex-col items-center justify-center gap-1">
+              <div className="flex flex-wrap flex-col items-center justify-center gap-1">
                 {statisticsTitle('SCORE')}
                 <Text
                   label={`${animeData.score}`}
