@@ -118,3 +118,10 @@ export interface AnimeResponse {
     url: string;
   }[];
 }
+
+export interface AnimeGenreResponse {
+  mal_id: number;
+  name: string;
+  url: string;
+  count: number;
+}

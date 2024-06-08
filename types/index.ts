@@ -12,22 +12,12 @@ export interface HttpResponse<T> {
   };
 }
 
-export type AnimeType =
-  | 'tv'
-  | 'movie'
-  | 'ova'
-  | 'special'
-  | 'ona'
-  | 'music'
-  | 'cm'
-  | 'pv'
-  | 'tv_special';
-
-export type AnimeStatus = 'airing' | 'complete' | 'upcoming';
-
-export type AnimeRating = 'g' | 'pg' | 'pg13' | 'r17' | 'r' | 'rx';
-
 export enum EnumQueryParam {
   PAGE = 'page',
   QUERY = 'query',
 }
+
+export type SelectOptionType = {
+  id: number;
+  name: string;
+};
