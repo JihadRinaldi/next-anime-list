@@ -1,0 +1,378 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnimeDetailHeader Snapshot Tests renders correctly with full data 1`] = `
+<div>
+  <div
+    class="p-4 flex gap-2 w-full bg-eerie-black rounded-md"
+  >
+    <div
+      class="relative aspect-[184/289] w-48 h-full"
+    >
+      <img
+        alt="Dokkiri Doctor Special"
+        class="object-cover"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="http://localhost/_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=3840&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+    </div>
+    <div
+      class="p-4 flex flex-col gap-4"
+    >
+      <h1
+        class="text-3xl font-bold"
+      >
+        Dokkiri Doctor Special
+      </h1>
+      <div
+        class="flex flex-col gap-4 justify-between"
+      >
+        <div
+          class="flex gap-6 items-start"
+        >
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              SCORE
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              8.5
+            </div>
+            <div
+              class="text-white text-center"
+            >
+              1,500 users
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              RANKED
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              #19340
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              POPULARITY
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              #16510
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              MEMBERS
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              467
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              FAVORITES
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex gap-4"
+        >
+          <div
+            class="flex flex-col gap-2"
+          >
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Status: 
+              </div>
+              <div
+                class="text-white"
+              >
+                Finished Airing
+              </div>
+            </div>
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Episodes: 
+              </div>
+              <div
+                class="text-white"
+              >
+                1
+              </div>
+            </div>
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Type: 
+              </div>
+              <div
+                class="text-white"
+              >
+                Special
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col gap-2"
+          >
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Genres: 
+              </div>
+              <div
+                class="text-white"
+              >
+                Comedy, Ecchi
+              </div>
+            </div>
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Duration: 
+              </div>
+              <div
+                class="text-white"
+              >
+                25 min
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AnimeDetailHeader Snapshot Tests renders correctly with partial data 1`] = `
+<div>
+  <div
+    class="p-4 flex gap-2 w-full bg-eerie-black rounded-md"
+  >
+    <div
+      class="relative aspect-[184/289] w-48 h-full"
+    >
+      <img
+        alt="Dokkiri Doctor Special"
+        class="object-cover"
+        data-nimg="fill"
+        decoding="async"
+        loading="lazy"
+        sizes="100vw"
+        src="http://localhost/_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=3840&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fcdn.myanimelist.net%2Fimages%2Fanime%2F12%2F44077.webp&w=3840&q=75 3840w"
+        style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+      />
+    </div>
+    <div
+      class="p-4 flex flex-col gap-4"
+    >
+      <h1
+        class="text-3xl font-bold"
+      >
+        Dokkiri Doctor Special
+      </h1>
+      <div
+        class="flex flex-col gap-4 justify-between"
+      >
+        <div
+          class="flex gap-6 items-start"
+        >
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              RANKED
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              #19340
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              POPULARITY
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              #16510
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              MEMBERS
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              467
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center gap-1"
+          >
+            <div
+              class="text-white w-full text-center bg-blue-600 px-2 rounded-md mb-1"
+            >
+              FAVORITES
+            </div>
+            <div
+              class="text-white text-3xl font-bold"
+            >
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex gap-4"
+        >
+          <div
+            class="flex flex-col gap-2"
+          >
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Status: 
+              </div>
+              <div
+                class="text-white"
+              >
+                Finished Airing
+              </div>
+            </div>
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Episodes: 
+              </div>
+              <div
+                class="text-white"
+              >
+                1
+              </div>
+            </div>
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Type: 
+              </div>
+              <div
+                class="text-white"
+              >
+                Special
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col gap-2"
+          >
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Genres: 
+              </div>
+              <div
+                class="text-white"
+              >
+                Comedy, Ecchi
+              </div>
+            </div>
+            <div
+              class="flex gap-2"
+            >
+              <div
+                class="text-white font-semibold"
+              >
+                Duration: 
+              </div>
+              <div
+                class="text-white"
+              >
+                25 min
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
