@@ -24,14 +24,7 @@ git clone https://github.com/Masagis/next-anime-list.git
 npm install
 ```
 
-3. Add/Fill .env file from .env.sample
-
-```bash
-mv .env.example .env
-ANIME_BASE_URL=https://api.jikan.moe/v4
-```
-
-4. Run the development server
+3. Run the development server
 
 ```bash
 npm run dev
