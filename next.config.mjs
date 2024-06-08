@@ -4,9 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  env: {
-    ANIME_BASE_URL: process.env.ANIME_BASE_URL,
-  },
 };
 
 export default nextConfig;
