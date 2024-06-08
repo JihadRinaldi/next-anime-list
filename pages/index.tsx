@@ -1,118 +1,165 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import { useCallback, useMemo, useState } from 'react';
 
-const inter = Inter({ subsets: ["latin"] });
+import {
+  AnimeList,
+  AnimeListSkeleton,
+  EmptyResult,
+  ErrorPage,
+  FilterGenre,
+  Pagination,
+  SortDropdown,
+  Text,
+} from '@/components';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
+import { useDebounce } from '@/hooks/useDebounce';
+import usePaginationAndSearch from '@/hooks/usePaginationAndSearch';
+import {
+  useGetAnimeGenresQuery,
+  useGetAnimeListQuery,
+} from '@/redux/services/anime';
+import { EnumQueryParam, SelectOptionType } from '@/types';
+import { SORT_DIRECTIONS, SORT_OPTIONS } from '@/utils/constants';
 
-export default function Home() {
+const Home = () => {
+  const [search, setSearch] = useState('');
+  const [sortOption, setSortOption] = useState(SORT_OPTIONS[0]);
+  const [sortDirection, setSortDirection] = useState(SORT_DIRECTIONS.DESC);
+  const [selectedGenre, setSelectedGenre] = useState<SelectOptionType | null>(
+    null
+  );
+  const searchKeyword = useDebounce(search);
+  const { toPage, getQuery } = usePaginationAndSearch();
+
+  const currentPage = Number(getQuery<number>(EnumQueryParam.PAGE, 1));
+
+  const {
+    data: animeGenresResponse,
+    isError: isAnimeGenresError,
+    isSuccess,
+    isLoading: isAnimeGenreLoading,
+  } = useGetAnimeGenresQuery();
+
+  const {
+    data: animeListResponse,
+    error,
+    isLoading,
+    isFetching,
+  } = useGetAnimeListQuery({
+    search: searchKeyword,
+    page: currentPage,
+    order_by: sortOption,
+    sort: sortDirection,
+    genre: selectedGenre ? `${selectedGenre.id}` : '',
+  });
+
+  const handleChangeKeyword = (input: string) => {
+    setSearch(input);
+    toPage(1);
+  };
+
+  const handleChangeGenre = (selectedGenre: SelectOptionType | null) => {
+    setSelectedGenre(selectedGenre);
+  };
+
+  const handleChangeSortDirection = () => {
+    if (sortDirection === SORT_DIRECTIONS.ASC) {
+      setSortDirection(SORT_DIRECTIONS.DESC);
+    } else {
+      setSortDirection(SORT_DIRECTIONS.ASC);
+    }
+  };
+
+  const displayLoader = () => {
+    if (isFetching || isLoading) {
+      return <AnimeListSkeleton />;
+    }
+    return null;
+  };
+
+  const displayError = () => {
+    if (error) {
+      return <ErrorPage />;
+    }
+    return null;
+  };
+
+  const displayAnimeList = () => {
+    if (animeListResponse?.data?.length) {
+      return (
+        <>
+          <AnimeList animeList={animeListResponse.data} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={animeListResponse?.pagination?.last_visible_page || 0}
+            onPageChange={toPage}
+          />
+        </>
+      );
+    }
+    return null;
+  };
+
+  const animeGenres = useMemo(() => {
+    if (animeGenresResponse?.data) {
+      return animeGenresResponse.data.map((genre) => ({
+        id: genre.mal_id,
+        name: genre.name,
+      }));
+    }
+    return [];
+  }, [animeGenresResponse]);
+
+  const displayEmptyResult = useCallback(() => {
+    if (
+      !isLoading &&
+      !isFetching &&
+      isSuccess &&
+      !animeListResponse?.data?.length
+    ) {
+      return <EmptyResult message="Anime Not Found" />;
+    }
+    return null;
+  }, [animeListResponse, isFetching, isLoading, isSuccess]);
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen container mx-auto p-4">
+      <h1 className="text-3xl font-bold my-4">アニメリスト</h1>
+      <div className="flex flex-col gap-4">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => handleChangeKeyword(e.target.value)}
+          className="text-black border p-2 w-full"
+          placeholder="Search anime..."
+        />
+        <div className="flex gap-2">
+          <SortDropdown sortOption={sortOption} setSortOption={setSortOption} />
+          <div
+            className="px-4 flex gap-2 items-center bg-eerie-black rounded-md cursor-pointer"
+            onClick={handleChangeSortDirection}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+            <Text label={sortDirection.toUpperCase()} />
+            <ImageWithFallback
+              className="cursor-pointer"
+              src="/icons/sort.svg"
+              width={20}
+              height={20}
+              alt="sort"
             />
-          </a>
+          </div>
+          <FilterGenre
+            selectedGenre={selectedGenre}
+            genres={animeGenres}
+            onFilterChange={handleChangeGenre}
+          />
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      {displayLoader()}
+      {displayError()}
+      {displayEmptyResult()}
+      {displayAnimeList()}
+    </div>
   );
-}
+};
+
+export default Home;
