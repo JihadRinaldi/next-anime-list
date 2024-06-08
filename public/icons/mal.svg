@@ -1,0 +1,11 @@
+<svg width="500" height="200" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="200" fill="#2E51A2" />
+  <text x="50%" y="45%" font-family="Arial, Helvetica, sans-serif" font-size="48" fill="#FFFFFF" text-anchor="middle"
+    dy=".3em">
+    MyAnimeList
+  </text>
+  <text x="50%" y="70%" font-family="'Yu Mincho', 'MS Mincho', serif" font-size="36" fill="#FFFFFF" text-anchor="middle"
+    dy=".3em">
+    マイアニメリスト
+  </text>
+</svg>

@@ -5,5 +5,8 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit"
   },
-  "prettier.configPath": ".prettierrc.js"
+  "prettier.configPath": ".prettierrc.js",
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  }
 }
