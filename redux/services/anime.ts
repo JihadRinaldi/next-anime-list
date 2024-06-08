@@ -16,8 +16,9 @@ export const animeApi = createApi({
     >({
       query: ({ search, page, order_by, sort, genre }) => {
         const genreParam = genre ? `&genres=${genre}` : '';
+        const sortParam = order_by === 'Newest' ? `&order_by=${order_by}` : `&sort=${sort}&order_by=${order_by}`
         return {
-          url: `/anime?q=${search}&page=${page}&limit=20&order_by=${order_by}&sort=${sort}${genreParam}`,
+          url: `/anime?q=${search}&page=${page}&limit=20${sortParam}${genreParam}`,
           method: 'GET',
         };
       },

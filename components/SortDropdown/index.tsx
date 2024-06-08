@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaSort, FaTimes } from 'react-icons/fa';
 
-import { SORT_OPTIONS } from '@/utils/constants';
+import { SORT_OPTIONS, capitalizeFirstLetter } from '@/utils/constants';
 
 interface Props {
   sortOption: string;
@@ -22,7 +22,7 @@ const SortDropdown = ({ sortOption, setSortOption }: Props) => {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 text-white bg-eerie-black px-4 py-2 rounded-md"
       >
-        <span>Sorted by {sortOption}</span>
+        <span>Sorted by {capitalizeFirstLetter(sortOption)}</span>
         <FaSort />
       </button>
       {isOpen && (
@@ -45,7 +45,7 @@ const SortDropdown = ({ sortOption, setSortOption }: Props) => {
                 className="mr-2 cursor-pointer"
               />
               <label htmlFor={option} className="text-white cursor-pointer">
-                {option}
+                {capitalizeFirstLetter(option)}
               </label>
             </div>
           ))}
