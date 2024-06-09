@@ -5,11 +5,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  env: {
+    ANIME_BASE_URL: process.env.ANIME_BASE_URL,
+  },
   swcMinify: true,
   experimental: {
     workerThreads: true,
-    cpus: 4,
-    sharedPool: true,
   },
 };
 
